@@ -7,6 +7,57 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>GitHub Werkt</h1>
+    <h1>Todo Lijst</h1>
+
+        <label for="txtTitle">Title</label>
+        <br>
+        <input type="text" name="txtTitle" id="txtTitle">
+        <br>
+        <label for="txtToDo">ToDo</label>
+        <br>
+        <textarea name="txtToDo" id="txtToDo" cols="30" rows="10"></textarea>
+        <br>
+        <button onclick="toevoegen();" id="btnToevoegen">Toevoegen</button>
+        <br>
+
+        <ul id="listToDo">
+        </ul>
+
+    <script>
+        var title = document.getElementById("txtTitle");
+        var todo = document.getElementById("txtToDo");
+        var ul = document.getElementById("listToDo");
+
+        var html = "";
+
+
+        var lijst = [];
+        console.log(lijst);
+
+        function toevoegen(){
+            var inputTitle = title.value;
+            var inputToDo = todo.value;
+
+            var newTodo = {title: inputTitle, todo:inputToDo};
+            lijst.push(newTodo);
+
+            lijstUpdaten();
+        }
+
+        function lijstUpdaten(){
+            html = "";
+            for(i=0;i<lijst.length;i++){
+
+                html += "<li><strong>" + lijst[i].title + "</strong>" + " " + lijst[i].todo + "</li>";
+            }
+
+            title.value ="";
+            todo.value = "";
+            
+
+            ul.innerHTML = html;
+        }
+    </script>
+    
 </body>
 </html>
